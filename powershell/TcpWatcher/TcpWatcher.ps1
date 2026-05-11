@@ -1,7 +1,7 @@
 Add-Type -AssemblyName PresentationFramework
 
-$server = "V0161"
-$port = 8451
+$server = "MyServer"
+$port = port nr
 $wasDown = $true
 
 while ($true) {
