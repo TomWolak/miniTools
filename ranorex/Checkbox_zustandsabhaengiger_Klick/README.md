@@ -33,6 +33,16 @@ The UserCode method:
 | unchecked | `false` | no action |
 
 ## Usage
+## Screenshots
+
+### Repository Item Example
+
+![RepositoryItem](01_CheckboxZustandsabhaengigerKlick.png)
+
+### Example Usage in Test Step
+
+![Usage](02_CheckboxZustandsabhaengigerKlick.png)
+
 
 ### 1. Create a repository item for the checkbox
 
