@@ -1,104 +1,42 @@
-SqlInjectionsRandomInput
-Overview
+## Notes
 
-SqlInjectionsRandomInput is a Ranorex UserCode method designed to test Free Text Search fields (or any other text input field) for potential SQL Injection and Search Query Injection vulnerabilities.
+- Tests Free Text Search fields and other text input controls for potential SQL Injection / Search Query Injection vulnerabilities
+- Intended for Ranorex UserCode
+- Randomly selects a payload from a configurable CSV file
+- Stores the selected payload in the Ranorex variable `SQL_Injections_Test_Input`
+- Supports easy extension of the payload library without modifying the UserCode
+- Use **Set Value** instead of **Key Sequence** when entering payloads containing special characters such as `{}`
 
-The method automatically selects a random payload from a predefined CSV file and stores it in a Ranorex variable. The generated payload can then be used within your test case to validate how the application handles potentially malicious input.
+## Demo
 
-How It Works
-A payload is randomly selected from a CSV file containing SQL Injection and Search Query Injection test strings.
+The `SqlInjectionsRandomInput` method randomly selects a payload from the configured CSV file and stores it in the Ranorex variable `SQL_Injections_Test_Input`.
 
-The selected payload is stored in the Ranorex variable:
+Before the payload can be used in a recording, the UserCode method must be executed.
 
-SQL_Injections_Test_Input
+The selected payload can then be inserted into the target field using **Set Value**.
 
-The payload is entered into the target input field.
-The search is executed (e.g., by clicking the Search icon and/or pressing Enter).
-The application response is validated.
+The payload list is loaded from:
 
-The validation verifies whether:
-
-the entered payload remains unchanged in the input field (expected behavior), or
-additional, modified, or unexpected characters appear (potential issue), which could indicate:
-improper input handling,
-information disclosure,
-security weaknesses,
-possible SQL/Search Query Injection vulnerabilities.
-
-Payload Source
-
-Payloads are loaded from a CSV file:
+```csharp
 string filePath = @"<insert path to payload file here>\SQL_Search_Test_Payloads_Runtime.csv";
-The payload list:
+```
 
-is maintained centrally in a single CSV file,
-is randomly accessed during test execution,
-can be extended at any time without modifying the test logic,
-supports adding new attack patterns and edge cases easily.
+Each test execution uses a single randomly selected payload from the CSV file.
 
-The random selection logic is implemented in the associated Ranorex UserCode.
+After the search is triggered (e.g. Search button and/or Enter key), the application should preserve the entered payload exactly as entered.
 
-Important: Use Set Value Instead of Key Sequence
+Unexpected modifications, additional characters, error messages, exposed data, or abnormal application behaviour may indicate a potential security issue.
 
-When inserting payloads into input fields, it is strongly recommended to use Set Value instead of Key Sequence.
+## Screenshot
 
-Why?
+### Variable Configuration
 
-Many SQL Injection payloads contain special characters such as:
-{ }
-' "
-( )
-;
---
+![Variable Configuration](SqlInjectionsRandomInput/01_SqlInjectionsRandomInput.png)
 
-Ranorex Key Sequence may interpret some of these characters as special keyboard commands, which can lead to:
+### Using Set Value
 
-unexpected behavior,
-invalid input,
-Ranorex exceptions,
-failed test executions.
+![Using Set Value](SqlInjectionsRandomInput/02_SqlInjectionsRandomInput.png)
 
-Using Set Value ensures that the payload is inserted exactly as generated.
+### Executing the UserCode
 
-Usage
-Step 1 – Create a Ranorex Variable
-
-Create a variable named:
-SQL_Injections_Test_Input
-
-and make it available within your recording/module.
-
-Step 2 – Execute the UserCode Method
-
-Before using the variable, execute the SqlInjectionsRandomInput UserCode method.
-
-This method generates a random payload and stores it in the variable.
-
-Step 3 – Insert the Payload Using Set Value
-
-Use Set Value to populate the target input field with the generated payload.
-
-$SQL_Injections_Test_Input
-
-Avoid using Key Sequence for this purpose.
-
-Expected Result
-
-A successful test execution should show that:
-
-the application accepts the input safely,
-the payload remains unchanged in the field,
-no application errors occur,
-no unexpected system behavior is triggered.
-
-Any modification of the payload, unexpected application response, exposed data, error messages, or system instability should be investigated as a potential security issue.
-
-Extending the Payload Library
-
-To add new test cases, simply append additional payloads to:
-
-SQL_Search_Test_Payloads_Runtime.csv
-
-No changes to the UserCode implementation are required.
-
-This allows the payload library to grow continuously while keeping the test step implementation unchanged.
+![Executing the UserCode](SqlInjectionsRandomInput/03_SqlInjectionsRandomInput.png)
