@@ -11,7 +11,7 @@ using Ranorex;
 public void SqlInjectionsRandomInput()
 {
     string filePath =
-        @"K:\Automatisierte Tests\interne Tools\SQL_Inject_Tests\payloads\SQL_Search_Test_Payloads_Runtime.csv";
+        @"<insert path to payload file here>\SQL_Search_Test_Payloads_Runtime.csv";
 
     if (!System.IO.File.Exists(filePath))
     {
