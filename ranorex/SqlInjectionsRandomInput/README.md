@@ -31,12 +31,12 @@ Unexpected modifications, additional characters, error messages, exposed data, o
 
 ### Variable Configuration
 
-![Variable Configuration](SqlInjectionsRandomInput/01_SqlInjectionsRandomInput.png)
+![Variable Configuration](01_SqlInjectionsRandomInput.png)
 
 ### Using Set Value
 
-![Using Set Value](SqlInjectionsRandomInput/02_SqlInjectionsRandomInput.png)
+![Using Set Value](02_SqlInjectionsRandomInput.png)
 
 ### Executing the UserCode
 
-![Executing the UserCode](SqlInjectionsRandomInput/03_SqlInjectionsRandomInput.png)
+![Executing the UserCode](03_SqlInjectionsRandomInput.png)
