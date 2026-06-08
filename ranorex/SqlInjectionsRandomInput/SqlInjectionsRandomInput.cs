@@ -1,9 +1,11 @@
-/* ------------- must --------------
+/* Required namespaces for Ranorex UserCode
+
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Ranorex;
---------------------------------------- */
+
+*/
 
 
 // -------------------- Methode SQL Inject Random Input ------------------ //
