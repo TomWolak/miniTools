@@ -11,11 +11,11 @@ Simple PowerShell utility for monitoring TCP availability of a VM or application
 
 ## Configuration
 
-Edit:
+Update the following variables before running the script:
 
 ```powershell
-$server = "V0161"
-$port = 8451
+$server = "MyServer"
+$port = 1234
 $checkIntervalSeconds = 10
 ```
 
